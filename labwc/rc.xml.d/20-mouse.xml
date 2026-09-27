@@ -6,10 +6,10 @@
         <action name="ShowMenu" menu="root-menu" />
       </mousebind>
       <!-- Scroll wheel on root to cycle workspaces -->
-      <mousebind button="Up" action="Press">
+      <mousebind direction="Up" action="Scroll">
         <action name="GoToDesktop" to="left" wrap="yes" />
       </mousebind>
-      <mousebind button="Down" action="Press">
+      <mousebind direction="Down" action="Scroll">
         <action name="GoToDesktop" to="right" wrap="yes" />
       </mousebind>
     </context>

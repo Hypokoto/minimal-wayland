@@ -8,7 +8,7 @@ if [ "$#" -ne 1 ]; then
 fi
 ACTION=$1
 
-if [ "$ACTION" == "up" ]; then
+if [ "$ACTION" = "up" ]; then
     wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
 elif [ "$ACTION" == "down" ]; then
     wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-

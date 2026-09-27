@@ -31,7 +31,7 @@
 
     <!-- Terminal -->
     <keybind key="W-Return">
-      <action name="Execute" command="footclient || foot" />
+      <action name="Execute" command='sh -c "footclient || foot"' />
     </keybind>
 
     <!-- Window Management -->
@@ -119,12 +119,12 @@
     <keybind key="XF86AudioPlay"><action name="Execute" command="playerctl play-pause" /></keybind>
     <keybind key="XF86AudioNext"><action name="Execute" command="playerctl next" /></keybind>
     <keybind key="XF86AudioPrev"><action name="Execute" command="playerctl previous" /></keybind>
-    <keybind key="XF86AudioRaiseVolume"><action name="Execute" command="$HOME/.config/labwc/scripts/osd-volume.sh up" /></keybind>
-    <keybind key="XF86AudioLowerVolume"><action name="Execute" command="$HOME/.config/labwc/scripts/osd-volume.sh down" /></keybind>
-    <keybind key="XF86AudioMute"><action name="Execute" command="$HOME/.config/labwc/scripts/osd-volume.sh mute" /></keybind>
-    <keybind key="XF86AudioMicMute"><action name="Execute" command="$HOME/.config/labwc/scripts/osd-volume.sh mic-mute" /></keybind>
-    <keybind key="XF86MonBrightnessUp"><action name="Execute" command="$HOME/.config/labwc/scripts/osd-brightness.sh up" /></keybind>
-    <keybind key="XF86MonBrightnessDown"><action name="Execute" command="$HOME/.config/labwc/scripts/osd-brightness.sh down" /></keybind>
+    <keybind key="XF86AudioRaiseVolume"><action name="Execute" command="~/.config/labwc/scripts/osd-volume.sh up" /></keybind>
+    <keybind key="XF86AudioLowerVolume"><action name="Execute" command="~/.config/labwc/scripts/osd-volume.sh down" /></keybind>
+    <keybind key="XF86AudioMute"><action name="Execute" command="~/.config/labwc/scripts/osd-volume.sh mute" /></keybind>
+    <keybind key="XF86AudioMicMute"><action name="Execute" command="~/.config/labwc/scripts/osd-volume.sh mic-mute" /></keybind>
+    <keybind key="XF86MonBrightnessUp"><action name="Execute" command="~/.config/labwc/scripts/osd-brightness.sh up" /></keybind>
+    <keybind key="XF86MonBrightnessDown"><action name="Execute" command="~/.config/labwc/scripts/osd-brightness.sh down" /></keybind>
 
     <!-- Screenshots -->
     <keybind key="Print">
@@ -145,10 +145,10 @@
         <action name="ShowMenu" menu="root-menu" />
       </mousebind>
       <!-- Scroll wheel on root to cycle workspaces -->
-      <mousebind button="Up" action="Press">
+      <mousebind direction="Up" action="Scroll">
         <action name="GoToDesktop" to="left" wrap="yes" />
       </mousebind>
-      <mousebind button="Down" action="Press">
+      <mousebind direction="Down" action="Scroll">
         <action name="GoToDesktop" to="right" wrap="yes" />
       </mousebind>
     </context>
