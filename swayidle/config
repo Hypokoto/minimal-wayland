@@ -3,5 +3,5 @@
 
 exec swayidle -w \
     timeout 300 'swaylock -f -C ~/.config/swaylock/config' \
-    timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+    timeout 600 '~/.config/labwc/scripts/dpms.sh off' resume '~/.config/labwc/scripts/dpms.sh on' \
     before-sleep 'swaylock -f -C ~/.config/swaylock/config'

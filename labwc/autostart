@@ -16,3 +16,4 @@ kanshi &
 wl-paste --watch cliphist store &
 lxqt-policykit-agent &
 swww-daemon &
+~/.config/swayidle/config &
