@@ -6,10 +6,10 @@ choice=$(echo -e "Lock\nLogout\nSuspend\nReboot\nShutdown" | fuzzel -d -p "Power
 case "$choice" in
     Lock)
         # Use swaylock or hyprlock
-        hyprlock || swaylock
+        swaylock
         ;;
     Logout)
-        labwc -e
+        loginctl terminate-session $XDG_SESSION_ID
         ;;
     Suspend)
         systemctl suspend

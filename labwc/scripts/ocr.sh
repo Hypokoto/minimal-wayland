@@ -22,12 +22,13 @@ grim -g "$REGION" "$TMP_IMG" 2>/dev/null
 if command -v tesseract >/dev/null 2>&1; then
 	TEXT=$(tesseract "$TMP_IMG" stdout -l eng --psm 6 2>/dev/null || true)
 	if [ -n "$TEXT" ]; then
+		SAFE_TEXT=$(echo -n "$TEXT" | sed -e 's/&/&amp;/g' -e 's/</&lt;/g' -e 's/>/&gt;/g')
 		echo -n "$TEXT" | wl-copy
-		notify-send -i edit-copy "OCR Extractor" "Extracted text copied to clipboard:\n$TEXT"
+		notify-send -i edit-copy "OCR Extractor" "Extracted text copied to clipboard:\n$SAFE_TEXT"
 	else
 		notify-send "OCR Extractor" "No text recognized in selected region"
 	fi
 else
 	wl-copy <"$TMP_IMG"
 	notify-send "OCR Extractor" "Image copied to clipboard (Install tesseract for text recognition)"
-fi
+fi\n

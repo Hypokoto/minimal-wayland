@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 # Brightness OSD via Mako
 
+set -euo pipefail
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <up|down>"
+    exit 1
+fi
 ACTION=$1
 
 if [ "$ACTION" == "up" ]; then

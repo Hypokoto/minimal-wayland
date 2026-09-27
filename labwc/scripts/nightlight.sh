@@ -9,9 +9,6 @@ if pgrep -x wlsunset >/dev/null 2>&1; then
 	pkill -x wlsunset >/dev/null 2>&1 || true
 	notify-send -i display-brightness "Night Light" "Deactivated — Normal color temperature restored"
 else
-	if wlsunset -T 4500 >/dev/null 2>&1 & then
-		notify-send -i display-brightness "Night Light" "Activated — Warm color temperature (4500K)"
-	else
-		notify-send -u critical -i display-brightness "Night Light" "Failed to activate wlsunset"
-	fi
+	wlsunset -T 4500 >/dev/null 2>&1 &
+	notify-send -r 91114 -u low "Night Light" "Enabled (4500K)"
 fi

@@ -10,14 +10,20 @@ set -euo pipefail
 
 RECORDINGS_DIR="${HOME}/Pictures/recordings"
 
-PID_FILE="/tmp/screen-record.pid"
+PID_FILE="/tmp/screen-record-${USER}.pid"
 
 # If wf-recorder is currently running, stop it cleanly
-if [ -f "$PID_FILE" ] && kill -0 $(cat "$PID_FILE") 2>/dev/null; then
-	kill -SIGINT $(cat "$PID_FILE") || true
-	rm -f "$PID_FILE"
-	notify-send -t 3000 -i video-x-generic "Screen Recorder" "Recording saved to ~/Pictures/recordings"
-	exit 0
+if [ -f "$PID_FILE" ]; then
+	PID=$(cat "$PID_FILE")
+	if [[ "$PID" =~ ^[0-9]+$ ]] && kill -0 "$PID" 2>/dev/null; then
+		kill -SIGINT "$PID" || true
+		rm -f "$PID_FILE"
+		notify-send -t 3000 -i video-x-generic "Screen Recorder" "Recording saved to ~/Pictures/recordings"
+		exit 0
+	else
+		# Stale PID file
+		rm -f "$PID_FILE"
+	fi
 fi
 
 # Ensure recordings directory exists
@@ -47,4 +53,4 @@ sleep 0.8
 
 # Launch wf-recorder
 wf-recorder "${EXTRA_ARGS[@]}" -f "$OUTPUT_FILE" >/dev/null 2>&1 &
-echo $! > "$PID_FILE"
+echo $! > "$PID_FILE"\n
