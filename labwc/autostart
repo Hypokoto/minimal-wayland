@@ -16,9 +16,10 @@ if command -v kanshi >/dev/null 2>&1; then
 	kanshi &
 fi
 
-# 4. Wayland clipboard history
+# 4. Wayland clipboard history (text & image buffers)
 if command -v wl-paste >/dev/null 2>&1 && command -v cliphist >/dev/null 2>&1; then
-	wl-paste --watch cliphist store &
+	wl-paste --type text --watch cliphist store &
+	wl-paste --type image --watch cliphist store &
 fi
 
 # 5. Polkit authentication agent

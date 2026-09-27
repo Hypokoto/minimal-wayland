@@ -29,6 +29,17 @@
       <action name="Execute" command="fuzzel" />
     </keybind>
 
+    <!-- Clipboard Manager (W-v: history, W-S-v: clear, W-C-v: delete) -->
+    <keybind key="W-v">
+      <action name="Execute" command="~/.config/labwc/scripts/clipboard.sh" />
+    </keybind>
+    <keybind key="W-S-v">
+      <action name="Execute" command="~/.config/labwc/scripts/clipboard.sh --clear" />
+    </keybind>
+    <keybind key="W-C-v">
+      <action name="Execute" command="~/.config/labwc/scripts/clipboard.sh --delete" />
+    </keybind>
+
     <!-- Terminal -->
     <keybind key="W-Return">
       <action name="Execute" command='sh -c "footclient || foot"' />

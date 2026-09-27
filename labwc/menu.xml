@@ -7,6 +7,9 @@
     <item label="Launcher (Fuzzel)">
       <action name="Execute" command="fuzzel" />
     </item>
+    <item label="Clipboard (History)">
+      <action name="Execute" command="~/.config/labwc/scripts/clipboard.sh" />
+    </item>
     <item label="File Manager (Yazi)">
       <action name="Execute" command="foot -e yazi" />
     </item>
