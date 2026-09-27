@@ -1,0 +1,6 @@
+  <windowRules>
+    <!-- Global rule: Strip thick titlebars, force 1px minimal border only -->
+    <windowRule identifier="*" serverDecoration="no" />
+    <windowRule identifier="foot" serverDecoration="no" />
+    <windowRule identifier="fuzzel" serverDecoration="no" />
+  </windowRules>

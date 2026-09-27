@@ -1,0 +1,16 @@
+  <mouse>
+    <default />
+    <context name="Root">
+      <!-- Right click desktop to open native menu -->
+      <mousebind button="Right" action="Press">
+        <action name="ShowMenu" menu="root-menu" />
+      </mousebind>
+      <!-- Scroll wheel on root to cycle workspaces -->
+      <mousebind button="Up" action="Press">
+        <action name="GoToDesktop" to="left" wrap="yes" />
+      </mousebind>
+      <mousebind button="Down" action="Press">
+        <action name="GoToDesktop" to="right" wrap="yes" />
+      </mousebind>
+    </context>
+  </mouse>

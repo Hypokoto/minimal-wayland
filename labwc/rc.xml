@@ -4,48 +4,6 @@
     <decoration>server</decoration>
     <gap>0</gap>
   </core>
-
-  <desktops>
-    <number>10</number>
-    <names>
-      <name>1</name>
-      <name>2</name>
-      <name>3</name>
-      <name>4</name>
-      <name>5</name>
-      <name>6</name>
-      <name>7</name>
-      <name>8</name>
-      <name>9</name>
-      <name>10</name>
-    </names>
-    <popupTime>1000</popupTime>
-  </desktops>
-
-  <mouse>
-    <default />
-    <context name="Root">
-      <!-- Right click desktop to open native menu -->
-      <mousebind button="Right" action="Press">
-        <action name="ShowMenu" menu="root-menu" />
-      </mousebind>
-      <!-- Scroll wheel on root to cycle workspaces -->
-      <mousebind button="Up" action="Press">
-        <action name="GoToDesktop" to="left" wrap="yes" />
-      </mousebind>
-      <mousebind button="Down" action="Press">
-        <action name="GoToDesktop" to="right" wrap="yes" />
-      </mousebind>
-    </context>
-  </mouse>
-
-  <windowRules>
-    <!-- Global rule: Strip thick titlebars, force 1px minimal border only -->
-    <windowRule identifier="*" serverDecoration="no" />
-    <windowRule identifier="foot" serverDecoration="no" />
-    <windowRule identifier="fuzzel" serverDecoration="no" />
-  </windowRules>
-
   <keyboard>
     <default />
 
@@ -179,4 +137,42 @@
       <action name="Execute"><command>sh -c 'mkdir -p ~/Pictures/Screenshots &amp;&amp; grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +"%Y-%m-%d_%H-%M-%S").png'</command></action>
     </keybind>
   </keyboard>
+  <mouse>
+    <default />
+    <context name="Root">
+      <!-- Right click desktop to open native menu -->
+      <mousebind button="Right" action="Press">
+        <action name="ShowMenu" menu="root-menu" />
+      </mousebind>
+      <!-- Scroll wheel on root to cycle workspaces -->
+      <mousebind button="Up" action="Press">
+        <action name="GoToDesktop" to="left" wrap="yes" />
+      </mousebind>
+      <mousebind button="Down" action="Press">
+        <action name="GoToDesktop" to="right" wrap="yes" />
+      </mousebind>
+    </context>
+  </mouse>
+  <desktops>
+    <number>10</number>
+    <names>
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+      <name>4</name>
+      <name>5</name>
+      <name>6</name>
+      <name>7</name>
+      <name>8</name>
+      <name>9</name>
+      <name>10</name>
+    </names>
+    <popupTime>1000</popupTime>
+  </desktops>
+  <windowRules>
+    <!-- Global rule: Strip thick titlebars, force 1px minimal border only -->
+    <windowRule identifier="*" serverDecoration="no" />
+    <windowRule identifier="foot" serverDecoration="no" />
+    <windowRule identifier="fuzzel" serverDecoration="no" />
+  </windowRules>
 </labwc_config>
