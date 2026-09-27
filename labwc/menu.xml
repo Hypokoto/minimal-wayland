@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openbox_menu>
-  <menu id="root-menu" label="Labwc Minimal">
-    <item label="Terminal">
-      <action name="Execute" command="kitty" />
+  <menu id="root-menu" label="Minimal Labwc">
+    <item label="Terminal (Foot)">
+      <action name="Execute" command="footclient || foot" />
     </item>
-    <item label="File Browser">
-      <action name="Execute" command="kitty -e yazi" />
+    <item label="Launcher (Fuzzel)">
+      <action name="Execute" command="fuzzel" />
+    </item>
+    <item label="File Manager (Yazi)">
+      <action name="Execute" command="foot -e yazi" />
     </item>
     <separator />
-    <item label="Reconfigure">
+    <item label="Reload Config">
       <action name="Reconfigure" />
     </item>
-    <item label="Exit">
+    <item label="Power Menu">
+      <action name="Execute" command="~/.config/labwc/scripts/powermenu.sh" />
+    </item>
+    <item label="Exit Labwc">
       <action name="Exit" />
     </item>
   </menu>
