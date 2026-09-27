@@ -36,7 +36,7 @@ MODE="${1:-}"
 EXTRA_ARGS=("-r" "60")
 
 if [ "$MODE" = "--region" ]; then
-	GEOM=$(slurp -b "#00000080" -c "#7dd3fcff" -w 1 2>/dev/null) || {
+	GEOM=$(slurp -b "#00000080" -c "#14b9b5ff" -w 1 2>/dev/null) || {
 		notify-send -t 1500 "Screen Recorder" "Region selection cancelled"
 		exit 0
 	}

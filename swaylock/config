@@ -1,12 +1,15 @@
-# Swaylock Minimal Config
+# Swaylock Minimal Config — Synthwave Palette
 ignore-empty-password
 show-failed-attempts
 daemonize
 
-# Colors (will be populated by minimalctl theme apply, currently using generic defaults)
-color=000000
-inside-color=1e1e2e
-ring-color=cba6f7
-key-hl-color=a6e3a1
-line-color=00000000
-text-color=cdd6f4
+color=0e091d
+inside-color=241B2F
+ring-color=14B9B5
+key-hl-color=72F1B8
+line-color=342946
+text-color=14B9B5
+inside-ver-color=241B2F
+ring-ver-color=04C5F0
+inside-wrong-color=241B2F
+ring-wrong-color=BE3F50

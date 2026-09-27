@@ -12,7 +12,7 @@ cleanup() {
 }
 trap cleanup EXIT INT TERM
 
-REGION=$(slurp -b "#00000080" -c "#7dd3fcff" -w 1 2>/dev/null) || {
+REGION=$(slurp -b "#00000080" -c "#14b9b5ff" -w 1 2>/dev/null) || {
 	notify-send "OCR Extractor" "Selection cancelled"
 	exit 0
 }

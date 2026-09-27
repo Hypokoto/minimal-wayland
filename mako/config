@@ -1,9 +1,9 @@
 font=monospace 10
-background-color=#1e1e2e
-text-color=#cdd6f4
-border-color=#89b4fa
-border-size=0
-border-radius=0
+background-color=#0e091d
+text-color=#14B9B5
+border-color=#BE3F50
+border-size=1
+border-radius=4
 default-timeout=5000
 margin=10
 padding=10
