@@ -9,7 +9,7 @@ case "$choice" in
         swaylock
         ;;
     Logout)
-        loginctl terminate-session $XDG_SESSION_ID
+        loginctl terminate-session "$XDG_SESSION_ID"
         ;;
     Suspend)
         systemctl suspend

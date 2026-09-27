@@ -4,7 +4,6 @@
 # Terminal server for instant `footclient` spawns
 foot --server &
 
-# Idle management (using existing wlroots-compatible hypridle)
 
 # Notifications
 mako &
@@ -16,4 +15,5 @@ kanshi &
 wl-paste --watch cliphist store &
 lxqt-policykit-agent &
 swww-daemon &
+# Idle management via swayidle
 ~/.config/swayidle/config &
