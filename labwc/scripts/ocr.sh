@@ -31,4 +31,4 @@ if command -v tesseract >/dev/null 2>&1; then
 else
 	wl-copy <"$TMP_IMG"
 	notify-send "OCR Extractor" "Image copied to clipboard (Install tesseract for text recognition)"
-fi\n
+fi

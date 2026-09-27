@@ -21,7 +21,7 @@
     </names>
     <popupTime>1000</popupTime>
   </desktops>
-  
+
   <mouse>
     <default />
     <context name="Root">

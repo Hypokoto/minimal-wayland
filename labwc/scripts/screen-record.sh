@@ -53,4 +53,4 @@ sleep 0.8
 
 # Launch wf-recorder
 wf-recorder "${EXTRA_ARGS[@]}" -f "$OUTPUT_FILE" >/dev/null 2>&1 &
-echo $! > "$PID_FILE"\n
+echo $! > "$PID_FILE"
