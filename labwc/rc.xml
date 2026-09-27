@@ -4,11 +4,14 @@
     <decoration>server</decoration>
     <gap>0</gap>
   </core>
-  <theme>
-    <name>minimal</name>
-  </theme>
   <desktops>
     <number>4</number>
+    <names>
+      <name>I</name>
+      <name>II</name>
+      <name>III</name>
+      <name>IV</name>
+    </names>
   </desktops>
   
   <mouse>
