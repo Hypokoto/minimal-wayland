@@ -1,19 +1,39 @@
 # Labwc Autostart
-# Phase 7 & 8: Zero status bar, strict startup optimization
+# Clean, deterministic, defensive startup pipeline
 
-# Terminal server for instant `footclient` spawns
-foot --server &
+# 1. Terminal server for instant `footclient` launches
+if command -v foot >/dev/null 2>&1; then
+	foot --server &
+fi
 
+# 2. Notifications
+if command -v mako >/dev/null 2>&1; then
+	mako &
+fi
 
-# Notifications
-mako &
+# 3. Dynamic display & monitor hotplugging
+if command -v kanshi >/dev/null 2>&1; then
+	kanshi &
+fi
 
-# Monitor hotplugging
-kanshi &
+# 4. Wayland clipboard history
+if command -v wl-paste >/dev/null 2>&1 && command -v cliphist >/dev/null 2>&1; then
+	wl-paste --watch cliphist store &
+fi
 
-# Clipboard history
-wl-paste --watch cliphist store &
-lxqt-policykit-agent &
-swww-daemon &
-# Idle management via swayidle
-~/.config/swayidle/config &
+# 5. Polkit authentication agent
+if command -v lxqt-policykit-agent >/dev/null 2>&1; then
+	lxqt-policykit-agent &
+fi
+
+# 6. Wayland wallpaper daemon
+if command -v swww-daemon >/dev/null 2>&1; then
+	swww-daemon &
+fi
+
+# 7. Idle & lockscreen management via swayidle
+if [[ -x "${XDG_CONFIG_HOME:-$HOME/.config}/swayidle/config" ]]; then
+	"${XDG_CONFIG_HOME:-$HOME/.config}/swayidle/config" &
+elif command -v swayidle >/dev/null 2>&1; then
+	swayidle -w &
+fi

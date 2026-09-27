@@ -8,13 +8,13 @@ if [ "$#" -ne 1 ]; then
 fi
 ACTION=$1
 
-if [ "$ACTION" == "up" ]; then
-    brightnessctl set +5%
-elif [ "$ACTION" == "down" ]; then
-    brightnessctl set 5%-
+if [ "$ACTION" = "up" ]; then
+    brightnessctl set +5% >/dev/null 2>&1 || true
+elif [ "$ACTION" = "down" ]; then
+    brightnessctl set 5%- >/dev/null 2>&1 || true
 fi
 
-# Get current brightness
-BRIGHTNESS=$(brightnessctl info | grep -oP "(?<=\()\d+(?=%\))")
+# Get current brightness portably without PCRE dependency
+BRIGHTNESS=$(brightnessctl info 2>/dev/null | grep -o '[0-9]\+%' | head -1 | tr -d '%' || echo "0")
 
 notify-send -r 91111 -t 1500 -a "OSD" "Brightness: ${BRIGHTNESS}%"
