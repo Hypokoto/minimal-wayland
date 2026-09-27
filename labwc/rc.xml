@@ -1,0 +1,106 @@
+<?xml version="1.0" ?>
+<labwc_config>
+  <core>
+    <decoration>server</decoration>
+    <gap>0</gap>
+  </core>
+  <theme>
+    <name>minimal</name>
+  </theme>
+  <desktops>
+    <number>4</number>
+  </desktops>
+  
+  <mouse>
+    <default />
+    <context name="Root">
+      <!-- Right click desktop to open native menu -->
+      <mousebind button="Right" action="Press">
+        <action name="ShowMenu" menu="root-menu" />
+      </mousebind>
+    </context>
+  </mouse>
+
+  <windowRules>
+    <!-- Global rule: Strip all thick titlebars, force 1px minimal border only -->
+    <windowRule identifier="*" serverDecoration="no" />
+    <!-- Example rule: make terminal float perfectly centered if you aren't tiling -->
+    <windowRule identifier="foot" serverDecoration="no" />
+  </windowRules>
+
+  <keyboard>
+    <keybind key="W-S-e">
+      <action name="Execute" command="~/.config/labwc/scripts/powermenu.sh" />
+    </keybind>
+    <default />
+    <!-- Window Management: Snapping -->
+    <keybind key="W-Left">
+      <action name="ToggleSnapToEdge" direction="left" />
+    </keybind>
+    <keybind key="W-Right">
+      <action name="ToggleSnapToEdge" direction="right" />
+    </keybind>
+    <keybind key="W-Up">
+      <action name="ToggleSnapToEdge" direction="up" />
+    </keybind>
+    <keybind key="W-Down">
+      <action name="ToggleSnapToEdge" direction="down" />
+    </keybind>
+
+    <!-- Workspace Management: Switch -->
+    <keybind key="W-1"><action name="GoToDesktop" to="1" /></keybind>
+    <keybind key="W-2"><action name="GoToDesktop" to="2" /></keybind>
+    <keybind key="W-3"><action name="GoToDesktop" to="3" /></keybind>
+    <keybind key="W-4"><action name="GoToDesktop" to="4" /></keybind>
+
+    <!-- Workspace Management: Send Window -->
+    <keybind key="W-S-1"><action name="SendToDesktop" to="1" follow="yes" /></keybind>
+    <keybind key="W-S-2"><action name="SendToDesktop" to="2" follow="yes" /></keybind>
+    <keybind key="W-S-3"><action name="SendToDesktop" to="3" follow="yes" /></keybind>
+    <keybind key="W-S-4"><action name="SendToDesktop" to="4" follow="yes" /></keybind>
+
+    <keybind key="W-Return">
+      <action name="Execute" command="footclient" />
+    </keybind>
+    <keybind key="W-f">
+      <action name="ToggleFullscreen" />
+    </keybind>
+    <keybind key="W-m">
+      <action name="ToggleMaximize" />
+    </keybind>
+    <keybind key="W-q">
+      <action name="Close" />
+    </keybind>
+    <keybind key="W-space">
+      <action name="Execute" command="fuzzel" />
+    </keybind>
+
+    <!-- Utilities -->
+    <keybind key="W-S-x"><action name="Execute" command="~/.config/labwc/scripts/ocr.sh" /></keybind>
+    <keybind key="W-S-r"><action name="Execute" command="~/.config/labwc/scripts/screen-record.sh" /></keybind>
+    <keybind key="A-W-r"><action name="Execute" command="~/.config/labwc/scripts/screen-record.sh --region" /></keybind>
+    <keybind key="W-S-n"><action name="Execute" command="~/.config/labwc/scripts/nightlight.sh" /></keybind>
+
+    <!-- Media & OSD Pipeline -->
+    <keybind key="XF86AudioPlay"><action name="Execute" command="playerctl play-pause" /></keybind>
+    <keybind key="XF86AudioNext"><action name="Execute" command="playerctl next" /></keybind>
+    <keybind key="XF86AudioPrev"><action name="Execute" command="playerctl previous" /></keybind>
+    <keybind key="XF86AudioRaiseVolume"><action name="Execute" command="$HOME/.config/labwc/scripts/osd-volume.sh up" /></keybind>
+    <keybind key="XF86AudioLowerVolume"><action name="Execute" command="$HOME/.config/labwc/scripts/osd-volume.sh down" /></keybind>
+    <keybind key="XF86AudioMute"><action name="Execute" command="$HOME/.config/labwc/scripts/osd-volume.sh mute" /></keybind>
+    <keybind key="XF86AudioMicMute"><action name="Execute" command="$HOME/.config/labwc/scripts/osd-volume.sh mic-mute" /></keybind>
+    <keybind key="XF86MonBrightnessUp"><action name="Execute" command="$HOME/.config/labwc/scripts/osd-brightness.sh up" /></keybind>
+    <keybind key="XF86MonBrightnessDown"><action name="Execute" command="$HOME/.config/labwc/scripts/osd-brightness.sh down" /></keybind>
+
+    <!-- Screenshots -->
+    <keybind key="Print">
+      <action name="Execute"><command>sh -c 'grim - | wl-copy'</command></action>
+    </keybind>
+    <keybind key="S-Print">
+      <action name="Execute"><command>sh -c 'grim -g "$(slurp)" - | wl-copy'</command></action>
+    </keybind>
+    <keybind key="C-Print">
+      <action name="Execute"><command>sh -c 'mkdir -p ~/Pictures/Screenshots &amp;&amp; grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +"%Y-%m-%d_%H-%M-%S").png'</command></action>
+    </keybind>
+  </keyboard>
+</labwc_config>

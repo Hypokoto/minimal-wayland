@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Swayidle launcher script
+
+exec swayidle -w \
+    timeout 300 'swaylock -f -C ~/.config/swaylock/config' \
+    timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -f -C ~/.config/swaylock/config'

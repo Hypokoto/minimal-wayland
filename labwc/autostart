@@ -1,0 +1,19 @@
+# Labwc Autostart
+# Phase 7 & 8: Zero status bar, strict startup optimization
+
+# Terminal server for instant `footclient` spawns
+foot --server &
+
+# Idle management (using existing wlroots-compatible hypridle)
+hypridle &
+
+# Notifications
+mako &
+
+# Monitor hotplugging
+kanshi &
+
+# Clipboard history
+wl-paste --watch cliphist store &
+lxqt-policykit-agent &
+awww-daemon &

@@ -1,0 +1,15 @@
+# Labwc Minimal Theme
+border.width: 1
+window.active.border.color: #00D9FF
+window.inactive.border.color: #19212D
+window.active.title.bg.color: #090B0F
+window.inactive.title.bg.color: #090B0F
+window.active.title.text.color: #00D9FF
+window.inactive.title.text.color: #7F899B
+menu.overlap.x: 0
+menu.overlap.y: 0
+menu.border.width: 1
+menu.border.color: #00D9FF
+menu.bg.color: #090B0F
+menu.text.color: #FFFFFF
+menu.separator.color: #19212D

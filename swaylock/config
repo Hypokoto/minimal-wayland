@@ -1,0 +1,12 @@
+# Swaylock Minimal Config
+ignore-empty-password
+show-failed-attempts
+daemonize
+
+# Colors (will be populated by minimalctl theme apply, currently using generic defaults)
+color=000000
+inside-color=1e1e2e
+ring-color=cba6f7
+key-hl-color=a6e3a1
+line-color=00000000
+text-color=cdd6f4

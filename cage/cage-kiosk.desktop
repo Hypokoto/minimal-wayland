@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Cage Kiosk
+Comment=Single-application Wayland kiosk
+Exec=/usr/bin/env bash -c "$HOME/.config/cage/kiosk.sh"
+Type=Application
