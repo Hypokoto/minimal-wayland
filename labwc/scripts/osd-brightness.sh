@@ -8,6 +8,13 @@ if [ "$#" -ne 1 ]; then
 fi
 ACTION=$1
 
+if command -v minosd >/dev/null 2>&1; then
+    case "$ACTION" in
+        up)   minosd B+10; exit 0 ;;
+        down) minosd B-10; exit 0 ;;
+    esac
+fi
+
 if [ "$ACTION" = "up" ]; then
     brightnessctl set +5% >/dev/null 2>&1 || true
 elif [ "$ACTION" = "down" ]; then

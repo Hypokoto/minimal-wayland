@@ -16,8 +16,10 @@ if command -v kanshi >/dev/null 2>&1; then
 	kanshi &
 fi
 
-# 4. Wayland clipboard history (text & image buffers)
-if command -v wl-paste >/dev/null 2>&1 && command -v cliphist >/dev/null 2>&1; then
+# 4. Wayland in-memory clipboard daemon (minclip)
+if command -v minclip >/dev/null 2>&1; then
+	minclip --daemon &
+elif command -v wl-paste >/dev/null 2>&1 && command -v cliphist >/dev/null 2>&1; then
 	wl-paste --type text --watch cliphist store &
 	wl-paste --type image --watch cliphist store &
 fi
@@ -44,4 +46,9 @@ fi
 # 8. Event-driven native battery monitor daemon
 if command -v minbat >/dev/null 2>&1; then
 	minbat &
+fi
+
+# 9. Wayland layer-shell OSD overlay daemon
+if command -v minosd >/dev/null 2>&1; then
+	minosd --daemon &
 fi

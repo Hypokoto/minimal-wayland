@@ -20,6 +20,33 @@ send_notif() {
 	fi
 }
 
+if command -v minclip >/dev/null 2>&1; then
+	case "$MODE" in
+		--clear|--wipe)
+			CONFIRM=$(printf "Cancel\nWipe Entire Clipboard History" | fuzzel --dmenu --prompt "⚠️ Clear Clipboard: " --width 35 --lines 2 || true)
+			if [ "$CONFIRM" = "Wipe Entire Clipboard History" ]; then
+				minclip --clear
+				if command -v wl-copy >/dev/null 2>&1; then
+					wl-copy -c || true
+				fi
+				send_notif "normal" "Clipboard Wiped" "All in-memory history cleared."
+			fi
+			;;
+		--delete)
+			send_notif "low" "Clipboard Manager" "In-memory ring shifts automatically."
+			;;
+		*)
+			SELECTION=$(minclip --list | fuzzel --dmenu --prompt "📋 " --placeholder "Search clipboard history..." --width 50 --lines 10 || true)
+			if [ -n "$SELECTION" ]; then
+				ID="${SELECTION%%[[:space:]]*}"
+				minclip --copy "$ID"
+				send_notif "low" "Copied to Clipboard" "Item restored and ready to paste."
+			fi
+			;;
+	esac
+	exit 0
+fi
+
 if ! command -v cliphist >/dev/null 2>&1 || ! command -v fuzzel >/dev/null 2>&1; then
 	send_notif "critical" "Clipboard Manager" "Required tools (cliphist / fuzzel) missing."
 	exit 1
