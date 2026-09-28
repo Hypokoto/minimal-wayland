@@ -43,12 +43,8 @@ if command -v swayidle >/dev/null 2>&1; then
 	swayidle -w &
 fi
 
-# 8. Event-driven native battery monitor daemon
-if command -v minbat >/dev/null 2>&1; then
-	minbat &
-fi
-
-# 9. Wayland layer-shell OSD overlay daemon
+# 8. Wayland layer-shell OSD overlay daemon
+# (minbat runs via systemd user unit minimal-battery-monitor.service)
 if command -v minosd >/dev/null 2>&1; then
 	minosd --daemon &
 fi
