@@ -14,7 +14,13 @@ elif [ "$ACTION" = "down" ]; then
     brightnessctl set 5%- >/dev/null 2>&1 || true
 fi
 
-# Get current brightness portably without PCRE dependency
-BRIGHTNESS=$(brightnessctl info 2>/dev/null | grep -o '[0-9]\+%' | head -1 | tr -d '%' || echo "0")
+# Get current brightness using fast machine-readable format
+RAW=$(brightnessctl -m 2>/dev/null || echo "")
+if [ -n "$RAW" ]; then
+    IFS=',' read -r _ _ _ BRIGHTNESS _ <<< "$RAW"
+    BRIGHTNESS="${BRIGHTNESS%\%}"
+else
+    BRIGHTNESS="0"
+fi
 
-notify-send -r 91111 -t 1500 -a "OSD" "Brightness: ${BRIGHTNESS}%"
+notify-send -r 91111 -t 1500 -a "OSD" "Brightness: ${BRIGHTNESS:-0}%"
