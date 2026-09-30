@@ -6,7 +6,7 @@
 }
 {
     "label" : "logout",
-    "action" : "echo -e 'No\nYes' | fuzzel --dmenu -p 'Logout? ' -l 2 | grep -q '^Yes$' && (loginctl terminate-session ${XDG_SESSION_ID:-} || labwc --exit || pkill -u $USER -x labwc)",
+    "action" : "loginctl terminate-session ${XDG_SESSION_ID:-} || labwc --exit || pkill -u $USER -x labwc",
     "text" : "Logout",
     "keybind" : "e"
 }
@@ -18,13 +18,13 @@
 }
 {
     "label" : "reboot",
-    "action" : "echo -e 'No\nYes' | fuzzel --dmenu -p 'Reboot? ' -l 2 | grep -q '^Yes$' && systemctl reboot",
+    "action" : "systemctl reboot",
     "text" : "Reboot",
     "keybind" : "r"
 }
 {
     "label" : "shutdown",
-    "action" : "echo -e 'No\nYes' | fuzzel --dmenu -p 'Shutdown? ' -l 2 | grep -q '^Yes$' && systemctl poweroff",
+    "action" : "systemctl poweroff",
     "text" : "Shutdown",
     "keybind" : "s"
 }
