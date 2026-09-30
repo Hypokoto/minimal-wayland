@@ -4,12 +4,12 @@ show-failed-attempts
 daemonize
 
 color=0e091d
-inside-color=241B2F
+inside-color=0e091d
 ring-color=14B9B5
-key-hl-color=72F1B8
-line-color=342946
-text-color=EDE6F5
-inside-ver-color=241B2F
-ring-ver-color=04C5F0
-inside-wrong-color=241B2F
+key-hl-color=ff7f41
+line-color=BE3F50
+text-color=14B9B5
+inside-ver-color=0e091d
+ring-ver-color=ffbe74
+inside-wrong-color=0e091d
 ring-wrong-color=BE3F50
