@@ -4,17 +4,17 @@
 }
 
 window {
-	background-color: rgba(5, 5, 5, 0.90);
+	background-color: rgba(14, 9, 29, 0.90);
 }
 
 button {
 	font-family: "JetBrains Mono", monospace;
 	font-size: 14px;
 	font-weight: 600;
-	color: #E2E2E2;
-	background-color: #050505;
-	border: 1px solid #1A1A1A;
-	border-radius: 0px;
+	color: #14B9B5;
+	background-color: #0e091d;
+	border: 1px solid #c53253;
+	border-radius: 16px;
 	background-repeat: no-repeat;
 	background-position: center 36%;
 	background-size: 32%;
@@ -25,11 +25,11 @@ button {
 button:focus,
 button:active,
 button:hover {
-	background-color: #050505;
-	border-color: #00E5FF;
-	color: #00E5FF;
+	background-color: #0e091d;
+	border-color: #14B9B5;
+	color: #14B9B5;
 	outline-style: none;
-	box-shadow: 0 0 16px rgba(0, 229, 255, 0.4);
+	box-shadow: 0 0 16px rgba(20, 185, 181, 0.4);
 }
 
 #lock {
@@ -39,9 +39,9 @@ button:hover {
 #lock:focus,
 #lock:active,
 #lock:hover {
-	border-color: #00E5FF;
-	color: #00E5FF;
-	box-shadow: 0 0 16px rgba(0, 229, 255, 0.5);
+	border-color: #14B9B5;
+	color: #14B9B5;
+	box-shadow: 0 0 16px rgba(20, 185, 181, 0.5);
 }
 
 #logout {
@@ -51,9 +51,9 @@ button:hover {
 #logout:focus,
 #logout:active,
 #logout:hover {
-	border-color: #FFEA00;
-	color: #FFEA00;
-	box-shadow: 0 0 16px rgba(255, 234, 0, 0.5);
+	border-color: #ffbe74;
+	color: #ffbe74;
+	box-shadow: 0 0 16px rgba(255, 190, 116, 0.5);
 }
 
 #suspend {
@@ -63,9 +63,9 @@ button:hover {
 #suspend:focus,
 #suspend:active,
 #suspend:hover {
-	border-color: #FF007F;
-	color: #FF007F;
-	box-shadow: 0 0 16px rgba(255, 0, 127, 0.5);
+	border-color: #9147a8;
+	color: #9147a8;
+	box-shadow: 0 0 16px rgba(145, 71, 168, 0.5);
 }
 
 #reboot {
@@ -75,9 +75,9 @@ button:hover {
 #reboot:focus,
 #reboot:active,
 #reboot:hover {
-	border-color: #FF3399;
-	color: #FF3399;
-	box-shadow: 0 0 16px rgba(255, 51, 153, 0.5);
+	border-color: #ff7f41;
+	color: #ff7f41;
+	box-shadow: 0 0 16px rgba(255, 127, 65, 0.5);
 }
 
 #shutdown {
@@ -87,7 +87,7 @@ button:hover {
 #shutdown:focus,
 #shutdown:active,
 #shutdown:hover {
-	border-color: #FF003C;
-	color: #FF003C;
-	box-shadow: 0 0 16px rgba(255, 0, 60, 0.5);
+	border-color: #BE3F50;
+	color: #BE3F50;
+	box-shadow: 0 0 16px rgba(190, 63, 80, 0.5);
 }
