@@ -2,6 +2,8 @@
 # Brightness OSD via Mako
 
 set -euo pipefail
+export PATH="$HOME/.local/bin:$PATH"
+
 if [ "$#" -ne 1 ]; then
     echo "Usage: $0 <up|down>"
     exit 1
@@ -10,8 +12,8 @@ ACTION=$1
 
 if command -v minosd >/dev/null 2>&1; then
     case "$ACTION" in
-        up)   minosd B+10; exit 0 ;;
-        down) minosd B-10; exit 0 ;;
+        up)   minosd B+5; exit 0 ;;
+        down) minosd B-5; exit 0 ;;
     esac
 fi
 
@@ -30,4 +32,4 @@ else
     BRIGHTNESS="0"
 fi
 
-notify-send -r 91111 -t 1500 -a "OSD" "Brightness: ${BRIGHTNESS:-0}%"
+notify-send -h string:x-canonical-private-synchronous:brightness -t 1500 -a "OSD" "Brightness: ${BRIGHTNESS:-0}%"
