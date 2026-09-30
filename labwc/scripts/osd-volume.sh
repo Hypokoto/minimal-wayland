@@ -12,10 +12,10 @@ ACTION=$1
 
 if command -v minosd >/dev/null 2>&1; then
     case "$ACTION" in
-        up)       minosd V+5; exit 0 ;;
-        down)     minosd V-5; exit 0 ;;
-        mute)     minosd VM; exit 0 ;;
-        mic-mute) minosd MM; exit 0 ;;
+        up)       minosd V+5 && exit 0 ;;
+        down)     minosd V-5 && exit 0 ;;
+        mute)     minosd VM && exit 0 ;;
+        mic-mute) minosd MM && exit 0 ;;
     esac
 fi
 

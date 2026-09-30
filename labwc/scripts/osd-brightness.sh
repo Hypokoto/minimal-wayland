@@ -12,8 +12,8 @@ ACTION=$1
 
 if command -v minosd >/dev/null 2>&1; then
     case "$ACTION" in
-        up)   minosd B+5; exit 0 ;;
-        down) minosd B-5; exit 0 ;;
+        up)   minosd B+5 && exit 0 ;;
+        down) minosd B-5 && exit 0 ;;
     esac
 fi
 
