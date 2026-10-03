@@ -85,6 +85,23 @@
       <action name="ToggleSnapToEdge" direction="down" />
     </keybind>
 
+    <!-- Multi-Monitor Output Management -->
+    <!-- Move active window to other monitor (Super+Shift+Left/Right or h/l) -->
+    <keybind key="W-S-Left"><action name="MoveToOutput" direction="left" wrap="yes" /></keybind>
+    <keybind key="W-S-Right"><action name="MoveToOutput" direction="right" wrap="yes" /></keybind>
+    <keybind key="W-S-h"><action name="MoveToOutput" direction="left" wrap="yes" /></keybind>
+    <keybind key="W-S-l"><action name="MoveToOutput" direction="right" wrap="yes" /></keybind>
+
+    <!-- Focus other monitor (Super+Ctrl+Left/Right or h/l) -->
+    <keybind key="W-C-Left"><action name="FocusOutput" direction="left" wrap="yes" /></keybind>
+    <keybind key="W-C-Right"><action name="FocusOutput" direction="right" wrap="yes" /></keybind>
+    <keybind key="W-C-h"><action name="FocusOutput" direction="left" wrap="yes" /></keybind>
+    <keybind key="W-C-l"><action name="FocusOutput" direction="right" wrap="yes" /></keybind>
+
+    <!-- Pin Window / Sticky (Omnipresent - keeps window visible across all workspaces) -->
+    <keybind key="W-p"><action name="ToggleOmnipresent" /></keybind>
+    <keybind key="W-s"><action name="ToggleOmnipresent" /></keybind>
+
     <!-- Workspace Switching (1 - 10) -->
     <keybind key="W-1"><action name="GoToDesktop" to="1" /></keybind>
     <keybind key="W-2"><action name="GoToDesktop" to="2" /></keybind>
