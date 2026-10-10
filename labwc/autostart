@@ -1,50 +1,22 @@
-# Labwc Autostart
-# Clean, deterministic, defensive startup pipeline
+#!/usr/bin/env bash
+# Labwc Autostart (Systemd-driven)
 
-# 1. Terminal server for instant `footclient` launches
+# 1. Terminal server for instant `footclient` launches (keep this in shell for immediate readiness, or we could move it to systemd)
+# Wait, let's keep foot server in autostart so it's guaranteed ready for terminals, 
+# or move it to systemd too? Let's keep it here for simplicity.
 if command -v foot >/dev/null 2>&1; then
 	foot --server &
 fi
 
-# 2. Notifications
-if command -v mako >/dev/null 2>&1; then
-	mako &
-fi
+# 2. Export environment to systemd
+systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
-# 3. Dynamic display & monitor hotplugging
-if command -v kanshi >/dev/null 2>&1; then
-	kanshi &
-fi
+# 3. Start the minimal wayland target (starts mako, kanshi, wallpaper, idle, osd, clip, polkit, bat)
+systemctl --user start minimal-wayland.target
 
-# 4. Wayland in-memory clipboard daemon (minclip)
-if command -v minclip >/dev/null 2>&1; then
-	minclip --daemon &
-elif command -v wl-paste >/dev/null 2>&1 && command -v cliphist >/dev/null 2>&1; then
-	wl-paste --type text --watch cliphist store &
-	wl-paste --type image --watch cliphist store &
-fi
-
-# 5. Polkit authentication agent
-if command -v lxqt-policykit-agent >/dev/null 2>&1; then
-	lxqt-policykit-agent &
-fi
-
-# 6. Wayland wallpaper daemon (fallback if systemd user service inactive)
-if ! pgrep -x awww-daemon >/dev/null 2>&1 && ! systemctl --user is-active --quiet minimal-wallpaper.service 2>/dev/null; then
-	if command -v awww-daemon >/dev/null 2>&1; then
-		awww-daemon &
-	elif command -v swww-daemon >/dev/null 2>&1; then
-		swww-daemon &
-	fi
-fi
-
-# 7. Idle & lockscreen management via swayidle
-if command -v swayidle >/dev/null 2>&1; then
-	swayidle -w &
-fi
-
-# 8. Wayland layer-shell OSD overlay daemon
-# (minbat runs via systemd user unit minimal-battery-monitor.service)
-if command -v minosd >/dev/null 2>&1; then
-	minosd --daemon &
-fi
+# 4. Explicit Teardown Hook
+# Wait for the parent compositor (labwc) to exit, then stop the session target cleanly.
+(
+	tail --pid=$PPID -f /dev/null
+	systemctl --user stop minimal-wayland.target
+) &
