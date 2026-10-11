@@ -33,12 +33,19 @@ if command -v minclip >/dev/null 2>&1; then
 			fi
 			;;
 		--delete)
-			send_notif "low" "Clipboard Manager" "In-memory ring shifts automatically."
+			SELECTION=$(minclip --list | fuzzel --dmenu --prompt "🗑️ Delete: " --placeholder "Select entry to remove..." --width 50 --lines 10 || true)
+			if [ -n "$SELECTION" ]; then
+				ID="${SELECTION%%[[:space:]]*}"
+				[[ "$ID" =~ ^[0-9]+$ ]] || exit 0
+				minclip --delete "$ID"
+				send_notif "low" "Item Removed" "Selected entry deleted from history."
+			fi
 			;;
 		*)
 			SELECTION=$(minclip --list | fuzzel --dmenu --prompt "📋 " --placeholder "Search clipboard history..." --width 50 --lines 10 || true)
 			if [ -n "$SELECTION" ]; then
 				ID="${SELECTION%%[[:space:]]*}"
+				[[ "$ID" =~ ^[0-9]+$ ]] || exit 0
 				minclip --copy "$ID"
 				send_notif "low" "Copied to Clipboard" "Item restored and ready to paste."
 			fi
@@ -51,6 +58,8 @@ if ! command -v cliphist >/dev/null 2>&1 || ! command -v fuzzel >/dev/null 2>&1;
 	send_notif "critical" "Clipboard Manager" "Required tools (cliphist / fuzzel) missing."
 	exit 1
 fi
+
+send_notif "critical" "Insecure Clipboard Fallback" "Using on-disk cliphist. Passwords persist!"
 
 case "$MODE" in
 	--clear|--wipe)

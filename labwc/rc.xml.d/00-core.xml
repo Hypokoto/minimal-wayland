@@ -2,3 +2,6 @@
     <decoration>server</decoration>
     <gap>0</gap>
   </core>
+  <theme>
+    <name>minimal</name>
+  </theme>

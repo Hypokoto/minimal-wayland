@@ -4,6 +4,7 @@
 # Profile 1: Laptop only
 profile standalone {
     output eDP-1 enable
+    exec ~/.local/bin/minimalctl hook display standalone
 }
 
 # Profile 2: Laptop + Any External Monitor
@@ -11,4 +12,5 @@ profile standalone {
 profile docked {
     output eDP-1 enable
     output * enable
+    exec ~/.local/bin/minimalctl hook display docked
 }

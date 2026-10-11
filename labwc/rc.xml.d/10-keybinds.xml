@@ -1,21 +1,15 @@
   <keyboard>
     <default />
 
-    <!-- Power Menu (W-S-e, W-S-E, W-Escape) -->
+    <!-- Power Menu (W-S-e, W-Escape) -->
     <keybind key="W-S-e">
-      <action name="Execute" command="~/.config/labwc/scripts/powermenu.sh" />
-    </keybind>
-    <keybind key="W-S-E">
       <action name="Execute" command="~/.config/labwc/scripts/powermenu.sh" />
     </keybind>
     <keybind key="W-Escape">
       <action name="Execute" command="~/.config/labwc/scripts/powermenu.sh" />
     </keybind>
 
-    <!-- Application Launcher (W-Space, W-d) -->
-    <keybind key="W-Space">
-      <action name="Execute" command="fuzzel" />
-    </keybind>
+    <!-- Application Launcher (W-space, W-d) -->
     <keybind key="W-space">
       <action name="Execute" command="fuzzel" />
     </keybind>

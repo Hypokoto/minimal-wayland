@@ -10,26 +10,22 @@ if [ "$#" -ne 1 ]; then
 fi
 ACTION=$1
 
-if command -v minosd >/dev/null 2>&1; then
-    case "$ACTION" in
-        up)   minosd B+5 && exit 0 ;;
-        down) minosd B-5 && exit 0 ;;
-    esac
-fi
-
 if [ "$ACTION" = "up" ]; then
     brightnessctl set +5% >/dev/null 2>&1 || true
 elif [ "$ACTION" = "down" ]; then
     brightnessctl set 5%- >/dev/null 2>&1 || true
 fi
 
-# Get current brightness using fast machine-readable format
-RAW=$(brightnessctl -m 2>/dev/null || echo "")
-if [ -n "$RAW" ]; then
-    IFS=',' read -r _ _ _ BRIGHTNESS _ <<< "$RAW"
-    BRIGHTNESS="${BRIGHTNESS%\%}"
-else
-    BRIGHTNESS="0"
+RAW=$(brightnessctl -m 2>/dev/null || true)
+if [ -z "$RAW" ]; then
+    exit 0
 fi
 
-notify-send -h string:x-canonical-private-synchronous:brightness -t 1500 -a "OSD" "Brightness: ${BRIGHTNESS:-0}%"
+IFS=',' read -r _ _ _ BRIGHTNESS _ <<< "$RAW"
+BRIGHTNESS="${BRIGHTNESS%\%}"
+
+if command -v minosd >/dev/null 2>&1 && minosd B "${BRIGHTNESS:-0}" 2>/dev/null; then
+    exit 0
+fi
+
+notify-send -r 91111 -h string:x-canonical-private-synchronous:brightness -t 1500 -a "OSD" "Brightness: ${BRIGHTNESS:-0}%"

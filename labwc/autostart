@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
 # Labwc Autostart (Systemd-driven)
 
-# 1. Terminal server for instant `footclient` launches (keep this in shell for immediate readiness, or we could move it to systemd)
-# Wait, let's keep foot server in autostart so it's guaranteed ready for terminals, 
-# or move it to systemd too? Let's keep it here for simplicity.
+# 1. Terminal server for instant `footclient` launches
 if command -v foot >/dev/null 2>&1; then
 	foot --server &
 fi
 
-# 2. Export environment to systemd
+# 2. Export environment to systemd and dbus
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
-# 3. Start the minimal wayland target (starts mako, kanshi, wallpaper, idle, osd, clip, polkit, bat)
+# 3. Start the minimal wayland target
 systemctl --user start minimal-wayland.target
 
 # 4. Explicit Teardown Hook
