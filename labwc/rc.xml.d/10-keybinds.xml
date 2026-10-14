@@ -55,28 +55,28 @@
 
     <!-- Window Snapping (Arrows & Vim keys) -->
     <keybind key="W-Left">
-      <action name="ToggleSnapToEdge" direction="left" />
+      <action name="ToggleSnapToEdge" direction="left" combine="yes" />
     </keybind>
     <keybind key="W-Right">
-      <action name="ToggleSnapToEdge" direction="right" />
+      <action name="ToggleSnapToEdge" direction="right" combine="yes" />
     </keybind>
     <keybind key="W-Up">
-      <action name="ToggleSnapToEdge" direction="up" />
+      <action name="ToggleSnapToEdge" direction="up" combine="yes" />
     </keybind>
     <keybind key="W-Down">
-      <action name="ToggleSnapToEdge" direction="down" />
+      <action name="ToggleSnapToEdge" direction="down" combine="yes" />
     </keybind>
     <keybind key="W-h">
-      <action name="ToggleSnapToEdge" direction="left" />
+      <action name="ToggleSnapToEdge" direction="left" combine="yes" />
     </keybind>
     <keybind key="W-l">
-      <action name="ToggleSnapToEdge" direction="right" />
+      <action name="ToggleSnapToEdge" direction="right" combine="yes" />
     </keybind>
     <keybind key="W-k">
-      <action name="ToggleSnapToEdge" direction="up" />
+      <action name="ToggleSnapToEdge" direction="up" combine="yes" />
     </keybind>
     <keybind key="W-j">
-      <action name="ToggleSnapToEdge" direction="down" />
+      <action name="ToggleSnapToEdge" direction="down" combine="yes" />
     </keybind>
 
     <!-- Multi-Monitor Output Management -->

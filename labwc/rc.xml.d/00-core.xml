@@ -5,3 +5,18 @@
   <theme>
     <name>minimal</name>
   </theme>
+  <snapping>
+    <range>
+      <inner>10</inner>
+      <outer>10</outer>
+    </range>
+    <cornerRange>60</cornerRange>
+    <topMaximize>no</topMaximize>
+    <overlay>
+      <enabled>yes</enabled>
+      <delay>
+        <inner>100</inner>
+        <outer>100</outer>
+      </delay>
+    </overlay>
+  </snapping>
